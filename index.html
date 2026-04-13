@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="calculator" aria-label="Calculator">
+        <header class="calc-header">
+          <h1 class="title">Calculator</h1>
+          <p class="subtitle">Simple web-based calculator</p>
+        </header>
+
+        <div class="display" role="group" aria-label="Calculator display">
+          <div id="history" class="history" aria-live="polite"></div>
+          <input
+            id="screen"
+            class="screen"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Current input"
+            value="0"
+          />
+        </div>
+
+        <div class="keys" role="group" aria-label="Calculator keys">
+          <button class="key key--util" data-action="clear" aria-label="Clear">AC</button>
+          <button class="key key--util" data-action="backspace" aria-label="Backspace">⌫</button>
+          <button class="key key--util" data-action="percent" aria-label="Percent">%</button>
+          <button class="key key--op" data-action="operator" data-value="/" aria-label="Divide">÷</button>
+
+          <button class="key" data-action="digit" data-value="7">7</button>
+          <button class="key" data-action="digit" data-value="8">8</button>
+          <button class="key" data-action="digit" data-value="9">9</button>
+          <button class="key key--op" data-action="operator" data-value="*" aria-label="Multiply">×</button>
+
+          <button class="key" data-action="digit" data-value="4">4</button>
+          <button class="key" data-action="digit" data-value="5">5</button>
+          <button class="key" data-action="digit" data-value="6">6</button>
+          <button class="key key--op" data-action="operator" data-value="-" aria-label="Subtract">−</button>
+
+          <button class="key" data-action="digit" data-value="1">1</button>
+          <button class="key" data-action="digit" data-value="2">2</button>
+          <button class="key" data-action="digit" data-value="3">3</button>
+          <button class="key key--op" data-action="operator" data-value="+" aria-label="Add">+</button>
+
+          <button class="key key--wide" data-action="digit" data-value="0">0</button>
+          <button class="key" data-action="decimal" data-value=".">.</button>
+          <button class="key key--equals" data-action="equals" aria-label="Equals">=</button>
+        </div>
+
+        <footer class="hint" aria-label="Hint">
+          Tip: You can also type using your keyboard (Enter = equals, Esc = clear).
+        </footer>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
