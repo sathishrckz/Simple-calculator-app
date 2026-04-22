@@ -1,3 +1,40 @@
+// Theme toggle — persists to localStorage, respects system preference
+(() => {
+  const THEME_KEY = 'theme';
+  const root = document.documentElement;
+
+  function getPreferredTheme() {
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme) {
+    root.dataset.theme = theme;
+  }
+
+  function loadTheme() {
+    try {
+      return localStorage.getItem(THEME_KEY) || getPreferredTheme();
+    } catch {
+      return getPreferredTheme();
+    }
+  }
+
+  function saveTheme(theme) {
+    try { localStorage.setItem(THEME_KEY, theme); } catch {}
+  }
+
+  applyTheme(loadTheme());
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.theme-toggle');
+    btn?.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      saveTheme(next);
+    });
+  });
+})();
+
 (() => {
   const screen = document.getElementById("screen");
   const historyEl = document.getElementById("history");
