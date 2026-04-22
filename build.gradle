@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.codemie'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.21.0'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.13'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty 'baseUrl', System.getProperty('baseUrl', 'http://localhost:8080')
+    systemProperty 'headless', System.getProperty('headless', 'true')
+
+    reports {
+        html.required = true
+        junitXml.required = true
+    }
+
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+        showStandardStreams = true
+    }
+}
